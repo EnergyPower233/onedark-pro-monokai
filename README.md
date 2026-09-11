@@ -76,7 +76,7 @@ Two variants are included:
 
 Transparency requires a terminal emulator or compositor with real background
 transparency (e.g. kitty/alacritty `background_opacity`, or a compositor).
-Without it the background will simply appear black.
+Without it the background will simply .
 
 ## Credits
 

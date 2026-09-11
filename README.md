@@ -32,7 +32,7 @@ One Dark syntax colors on a deep Monokai background (`#121212`).
 
 ```lua
 {
-  "yourname/onedark-pro-monokai",
+  "EnergyPower233/onedark-pro-monokai",
   lazy = false,
   priority = 1000,
   config = function()
@@ -46,7 +46,7 @@ One Dark syntax colors on a deep Monokai background (`#121212`).
 
 ```lua
 use {
-  "yourname/onedark-pro-monokai",
+  "EnergyPower233/onedark-pro-monokai",
   config = function()
     vim.cmd.colorscheme("onedark-pro-monokai")
   end,
@@ -56,7 +56,7 @@ use {
 ### vim-plug
 
 ```vim
-Plug 'yourname/onedark-pro-monokai'
+Plug 'EnergyPower233/onedark-pro-monokai'
 " then in your config:
 colorscheme onedark-pro-monokai
 ```

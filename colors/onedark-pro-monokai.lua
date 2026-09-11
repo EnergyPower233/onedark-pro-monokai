@@ -286,6 +286,11 @@ M.transparent_groups = {
 }
 
 function M.setup()
+  vim.cmd("highlight clear")
+  if vim.fn.exists("syntax_on") == 1 then
+    vim.cmd("syntax reset")
+  end
+
   vim.o.background = "dark"
   vim.g.colors_name = "onedark-pro-monokai"
   local transparent = vim.g.odpm_transparent == true

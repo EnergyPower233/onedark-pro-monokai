@@ -1,12 +1,15 @@
 # One Dark Pro Monokai Darker for Neovim
 
-A faithful Neovim port of the VSCode theme
+A Neovim port of the VSCode theme
 [One Dark Pro Monokai Darker](https://github.com/eser/vscode-one-dark-pro-monokai-darker)
 by [eser](https://github.com/eser).
 
 One Dark syntax colors on a deep Monokai background (`#121212`).
 
-## Palette
+The colorscheme is available as `onedark-pro-monokai`, with an optional
+`onedark-pro-monokai-transparent` variant.
+
+## Core palette
 
 | Element    | Color                |
 | ---------- | -------------------- |
@@ -24,7 +27,7 @@ One Dark syntax colors on a deep Monokai background (`#121212`).
 ## Requirements
 
 - Neovim >= 0.10 (tested on 0.12)
-- `termguicolors` enabled
+- True color support (`vim.opt.termguicolors = true`)
 
 ## Install
 
@@ -36,10 +39,16 @@ One Dark syntax colors on a deep Monokai background (`#121212`).
   lazy = false,
   priority = 1000,
   config = function()
-    vim.cmd.colorscheme("onedark-pro-monokai")               -- opaque
-    -- vim.cmd.colorscheme("onedark-pro-monokai-transparent") -- transparent
+    vim.opt.termguicolors = true
+    vim.cmd.colorscheme("onedark-pro-monokai")
   end,
 }
+```
+
+For the transparent variant, replace the last line with:
+
+```lua
+vim.cmd.colorscheme("onedark-pro-monokai-transparent")
 ```
 
 ### packer.nvim
@@ -48,6 +57,7 @@ One Dark syntax colors on a deep Monokai background (`#121212`).
 use {
   "EnergyPower233/onedark-pro-monokai",
   config = function()
+    vim.opt.termguicolors = true
     vim.cmd.colorscheme("onedark-pro-monokai")
   end,
 }
@@ -57,27 +67,53 @@ use {
 
 ```vim
 Plug 'EnergyPower233/onedark-pro-monokai'
-" then in your config:
+```
+
+Then in your Neovim config:
+
+```vim
+set termguicolors
 colorscheme onedark-pro-monokai
 ```
 
 ### Manual
 
-Copy the `colors/` directory to `~/.config/nvim/colors/`.
+Copy the files inside `colors/` to your Neovim colors directory:
+
+```bash
+mkdir -p ~/.config/nvim/colors
+cp colors/*.lua ~/.config/nvim/colors/
+```
+
+## Usage
+
+Opaque variant:
+
+```lua
+vim.cmd.colorscheme("onedark-pro-monokai")
+```
+
+Transparent variant:
+
+```lua
+vim.cmd.colorscheme("onedark-pro-monokai-transparent")
+```
 
 ## Transparent background
 
 Two variants are included:
 
 - `onedark-pro-monokai` — opaque background
-- `onedark-pro-monokai-transparent` — editor background, floats, statusline,
-  tabline, gutter and completion menu are transparent; selection and
-  completion-selection stay visible
+- `onedark-pro-monokai-transparent` — removes the background from the main
+  editor and common built-in Neovim UI highlight groups while keeping selection
+  highlights visible
 
 Transparency requires a terminal emulator or compositor with real background
-transparency (e.g. kitty/alacritty `background_opacity`, or a compositor).
-Without terminal transparency, transparent areas will use
+transparency enabled. Without terminal transparency, transparent areas will use
 your terminal's background color.
+
+Plugins that define their own highlight groups may require separate transparency
+configuration.
 
 ## Credits
 
